@@ -1,7 +1,8 @@
 import React from 'react';
 import { FaFacebook,FaGoogle } from "react-icons/fa";
-import firebase from 'firebase/app'
+import 'firebase/compat/app'
 import {auth} from '../firebase'
+import firebase from 'firebase/compat/app'
 const Login = () => {
     return ( 
         <div id='login-page'>
@@ -10,11 +11,13 @@ const Login = () => {
         
                 <div
                     className='login-button google'
+                    onClick={ () => auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider())}
                 >
                     <FaGoogle /> Sign In with Google
                 </div>
                 <div
                     className='login-button facebook'
+                    onClick = { () => auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider())}
                 >
                     <FaFacebook /> Sign In with Facebook
                 </div>
